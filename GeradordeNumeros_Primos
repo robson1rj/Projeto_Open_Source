@@ -1,0 +1,25 @@
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def generate_primes(limit):
+    primes = []
+    for num in range(2, limit + 1):
+        if is_prime(num):
+            primes.append(num)
+    return primes
+
+if __name__ == "__main__":
+    limit = int(input("Digite o limite para gerar números primos: "))
+    prime_list = generate_primes(limit)
+    print("Números primos até", limit, ":", prime_list)
